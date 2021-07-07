@@ -1,10 +1,11 @@
 import React from "react";
-
+import Board from "./components/Board";
+import "./styles/root.scss";
 const App = () => {
   return(
-  <div>
-    <h1>Welcome to React Parcel Micro App!</h1>
-    <p>Im Learning React!!</p>
+  <div className="app">
+    <h2>tictactoe</h2>
+    <Board  />
   </div>
   );
 };
