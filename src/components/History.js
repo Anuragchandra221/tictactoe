@@ -2,10 +2,10 @@ import React from 'react'
 
 function History({ history, moveTo, currentMove}) {
     return (
-        <ul>
+        <ul className='history'>
           {history.map((__, move)=>{
             return (
-              <li key={move}><button 
+              <li key={move}><button className="history"
               style={{
                 fontWeight: move===currentMove?'bold':'normal'
               }}

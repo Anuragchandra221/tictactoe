@@ -16,7 +16,7 @@ const App = () => {
         if(current.board[position] || winner){
             return
         }
-        setHistory(prev=>{
+        setHistory((prev)=>{
             const last = prev[prev.length - 1];
             const newBoard = last.board.map((square, pos)=>{
                 if(pos == position){
@@ -26,19 +26,28 @@ const App = () => {
             })
             return prev.concat({board: newBoard, isXNext:!last.isXNext})
     })
-    setCurrentMove(prev=>prev+1)
+    setCurrentMove((prev)=>prev+1)
 
     
 
+}
+const startNewGame = ()=>{
+  setHistory([{board:Array(9).fill(null), isXNext:true}])
+  setCurrentMove(0)
 }
   const moveTo = move=>{
     setCurrentMove(move)
   }
   return(
   <div className="app">
-    <h2>tictactoe</h2>
+    <h2 style={
+      {
+        color: "#fff"
+      }
+    }>TICTACTOE</h2>
     <StatusMessage winner={winner} current={current}/>
-    <Board board={current.board} handleSquareClick={handleSquareClick}  />
+    <Board board={current.board} handleSquareClick={handleSquareClick} winner={winner} />
+    <button type="button" className="startNewGame" onClick={startNewGame}>Start new game</button>
     <History history={history} moveTo={moveTo} currentMove = {currentMove}/>
   </div>
   );

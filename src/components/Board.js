@@ -1,12 +1,20 @@
 import React from 'react'
 import Square from './Square'
 
-const Board = ({board,handleSquareClick}) => {
+const Board = ({board,handleSquareClick, winner}) => {
 
     
     const renderSquare = (position)=>{
+        var win = false
+        if (winner){
+            for(var i=0;i<winner.length;i++){
+                if(board[position] == winner[i]){
+                    win = true
+                }
+            }
+        }
         return(
-        <Square value = {board[position]} onClick = {()=>
+        <Square classs={win} value = {board[position]} onClick = {()=>
                     handleSquareClick(position)
                 }/>
         )
